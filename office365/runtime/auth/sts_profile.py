@@ -1,6 +1,6 @@
 import datetime
 import pytz
-from six.moves import urllib_parse
+from six.moves.urllib_parse import urlparse
 from datetime import datetime, timedelta
 
 class STSProfile(object):
@@ -22,7 +22,7 @@ class STSProfile(object):
 
     @property
     def tenant(self):
-        return urllib_parse.urlparse(self.authorityUrl).netloc
+        return urlparse(self.authorityUrl).netloc
 
     @property
     def security_token_service_url(self):
