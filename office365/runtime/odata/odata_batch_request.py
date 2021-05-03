@@ -49,7 +49,7 @@ class ODataBatchRequest(ClientRequest):
             + response.content
         )
 
-        message = message_from_bytes(http_body)  # type: Message
+        message = message_from_string(http_body)  # type: Message
         for raw_response in message.get_payload():
             if raw_response.get_content_type() == "application/http":
                 yield self._deserialize_response(raw_response)
