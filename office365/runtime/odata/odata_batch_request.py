@@ -21,7 +21,7 @@ class ODataBatchRequest(ClientRequest):
         media_type = "multipart/mixed"
         content_type = "; ".join([media_type, "boundary={0}".format(self._current_query.current_boundary)])
         request.ensure_header('Content-Type', content_type)
-        request.data = self._prepare_payload().as_bytes()
+        request.data = self._prepare_payload().as_string()
         return request
 
     def process_response(self, response):
@@ -126,7 +126,8 @@ class ODataBatchRequest(ClientRequest):
         method = request.method
         if "X-HTTP-Method" in request.headers:
             method = request.headers["X-HTTP-Method"]
-        lines = ["{method} {url} HTTP/1.1".format(method=method, url=request.url)] + [':'.join(h) for h in request.headers.items()]
+        lines = ["{method} {url} HTTP/1.1".format(method=method, url=request.url)] + \
+                [':'.join(h) for h in request.headers.items()]
         if request.data:
             lines.append(eol)
             lines.append(json.dumps(request.data))
