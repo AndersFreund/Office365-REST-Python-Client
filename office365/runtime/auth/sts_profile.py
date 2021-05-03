@@ -1,7 +1,7 @@
 import datetime
-from datetime import datetime, timezone, timedelta
-from urllib.parse import urlparse
-
+import pytz
+from six.moves import urllib_parse
+from datetime import datetime, timedelta
 
 class STSProfile(object):
 
@@ -15,14 +15,14 @@ class STSProfile(object):
         self.securityTokenServicePath = 'extSTS.srf'
         self.userRealmServicePath = 'GetUserRealm.srf'
         self.tokenIssuer = 'urn:federation:MicrosoftOnline'
-        now = datetime.now(tz=timezone.utc)
-        self.created = now.astimezone(timezone.utc).isoformat('T')[:-9] + 'Z'
-        self.expires = (now + timedelta(minutes=10)).astimezone(timezone.utc).isoformat('T')[:-9] + 'Z'
+        now = datetime.now(tz=pytz.utc)
+        self.created = now.astimezone(pytz.utc).isoformat('T')[:-9] + 'Z'
+        self.expires = (now + timedelta(minutes=10)).astimezone(pytz.utc).isoformat('T')[:-9] + 'Z'
         self.signInPage = '_forms/default.aspx?wa=wsignin1.0'
 
     @property
     def tenant(self):
-        return urlparse(self.authorityUrl).netloc
+        return urllib_parse.urlparse(self.authorityUrl).netloc
 
     @property
     def security_token_service_url(self):
