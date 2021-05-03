@@ -1,6 +1,6 @@
 import json
 import re
-from email import message_from_bytes
+from email import message_from_string
 from email.message import Message
 
 from office365.runtime.client_request import ClientRequest
@@ -106,7 +106,8 @@ class ODataBatchRequest(ClientRequest):
                 "content": None
             }
         else:
-            *headers_raw, content = lines[1:]
+            headers_raw = lines[1:-1]
+            content = lines[-1]
             content = json.loads(content)
             return {
                 "status": status_info,
@@ -125,8 +126,7 @@ class ODataBatchRequest(ClientRequest):
         method = request.method
         if "X-HTTP-Method" in request.headers:
             method = request.headers["X-HTTP-Method"]
-        lines = ["{method} {url} HTTP/1.1".format(method=method, url=request.url),
-                 *[':'.join(h) for h in request.headers.items()]]
+        lines = ["{method} {url} HTTP/1.1".format(method=method, url=request.url)] + [':'.join(h) for h in request.headers.items()]
         if request.data:
             lines.append(eol)
             lines.append(json.dumps(request.data))
