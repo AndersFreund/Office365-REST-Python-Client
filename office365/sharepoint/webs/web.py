@@ -1,3 +1,4 @@
+# coding=utf-8
 from office365.runtime.client_result import ClientResult
 from office365.runtime.client_value_collection import ClientValueCollection
 from office365.runtime.queries.client_query import ClientQuery

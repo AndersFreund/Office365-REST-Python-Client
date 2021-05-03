@@ -34,7 +34,7 @@ class UploadSessionQuery(CreateFileQuery):
         :type chunk_uploaded: (int, *)->None
         """
 
-        super().__init__(files, _create_empty_file(source_path))
+        super(UploadSessionQuery, self).__init__(files, _create_empty_file(source_path))
         self._chunk_size = chunk_size
         self._upload_id = str(uuid.uuid4())
         self._source_path = source_path

@@ -12,7 +12,7 @@ class TaxonomyService(ClientRuntimeContext):
         """
         :type  context: office365.sharepoint.client_context.ClientContext
         """
-        super().__init__()
+        super(TaxonomyService, self).__init__()
         self._auth_context = context.authentication_context
         self._pendingRequest = ODataRequest(self, V4JsonFormat("minimal"))
         self._service_root_url = f"{context.service_root_url()}v2.1/"

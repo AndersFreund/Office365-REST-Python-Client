@@ -9,5 +9,5 @@ class GetWebUrlFromPageUrlQuery(ServiceOperationQuery):
         payload = {
             "pageFullUrl": page_full_url
         }
-        super().__init__(context.web, "GetWebUrlFromPageUrl", None, payload, None, result)
+        super(GetWebUrlFromPageUrlQuery, self).__init__(context.web, "GetWebUrlFromPageUrl", None, payload, None, result)
         self.static = True

@@ -10,6 +10,6 @@ class CreateFileQuery(ServiceOperationQuery):
         :type file_creation_information: office365.sharepoint.files.file_creation_information.FileCreationInformation
         :type files: FileCollection
         """
-        super().__init__(files, "add", file_creation_information.to_json(), file_creation_information.content, None,
+        super(CreateFileQuery, self).__init__(files, "add", file_creation_information.to_json(), file_creation_information.content, None,
                          File(files.context))
         files.add_child(self._return_type)

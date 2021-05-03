@@ -7,7 +7,7 @@ from office365.sharepoint.sites.siteDesignPrincipal import SiteDesignPrincipalCo
 class SiteScriptUtility(BaseEntity):
 
     def __init__(self, context):
-        super().__init__(context,
+        super(SiteScriptUtility, self).__init__(context,
                          ResourcePath("Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteScriptUtility"))
 
     @staticmethod

@@ -5,7 +5,7 @@ class FieldLookup(Field):
 
     def __init__(self, context):
         """Specifies a lookup field."""
-        super().__init__(context)
+        super(FieldLookup, self).__init__(context)
 
     @property
     def allow_multiple_values(self):

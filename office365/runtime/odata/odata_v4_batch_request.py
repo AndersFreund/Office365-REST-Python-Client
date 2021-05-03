@@ -7,7 +7,7 @@ from office365.runtime.queries.batch_query import BatchQuery
 class ODataV4BatchRequest(ClientRequest):
 
     def __init__(self, context):
-        super().__init__(context)
+        super(ODataV4BatchRequest, self).__init__(context)
 
     def build_request(self):
         url = "{0}$batch".format(self.context.service_root_url())

@@ -1,3 +1,4 @@
+# coding=utf-8
 from office365.runtime.client_value import ClientValue
 
 

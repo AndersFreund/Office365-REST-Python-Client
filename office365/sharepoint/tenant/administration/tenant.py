@@ -17,7 +17,7 @@ from office365.sharepoint.tenant.administration.spo_operation import SpoOperatio
 class Tenant(ClientObject):
 
     def __init__(self, context):
-        super().__init__(context, ResourcePath("Microsoft.Online.SharePoint.TenantAdministration.Tenant"), None,
+        super(Tenant, self).__init__(context, ResourcePath("Microsoft.Online.SharePoint.TenantAdministration.Tenant"), None,
                          "Microsoft.Online.SharePoint.TenantAdministration")
 
     @staticmethod
