@@ -1,4 +1,4 @@
-from urllib.parse import quote
+from six.moves.urllib_parse import quote
 
 from office365.entity import Entity
 from office365.onedrive.driveItem import DriveItem
