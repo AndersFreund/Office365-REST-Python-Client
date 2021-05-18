@@ -1,5 +1,5 @@
 import json
-
+from future.utils import string_types
 from office365.runtime.client_value import ClientValue
 
 
@@ -35,7 +35,7 @@ class ODataPathParser(object):
 
     @staticmethod
     def encode_method_value(value):
-        if type(value) is str:
+        if isinstance(value, string_types):
             value = value.replace("'", "''")
 
             # Same replacements as SQL Server
